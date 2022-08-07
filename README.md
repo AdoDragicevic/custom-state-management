@@ -8,7 +8,9 @@ In the code below I created a custom state management system for react.
 
 ---
 
-## 1. in our react project we add the below code, responsible for configuring the global store logic (e.g. in src/store/store.js)
+## 1. in your react project add the below code, responsible for configuring the global store logic 
+
+e.g. in src/store/store.js
 
 ```js
 import { useState, useEffect } from "react";
@@ -70,9 +72,9 @@ export const initStore = (userActions, initialState) => {
 ```
 
 
-## 2. We create a function for creating a custom store
+## 2. create a function for creating a custom store
 
-Blueprint for the store creation function; we can create multiple stores, they will be merged into 1 store
+Blueprint for the store creation function; we can create multiple stores, they will be merged into 1 store; see example below under "EXAMPLE"
 
 ``` js
 function createSomeStore() {
@@ -94,7 +96,7 @@ createSomeStore();
 
 ### EXAMPLE:
 
-## Creating a custom store function, based on step 2
+## Creating custom store function, based on step 2
 ``` js
 export const createCounterStore = () => {
 
@@ -120,7 +122,7 @@ export const createCounterStore = () => {
 }
 ```
 
-## Creating a custom component that will consume the useStore hook
+## Creating custom component that consumes useStore hook
 ``` js
 import { useStore } from "../store/store";
 
@@ -155,7 +157,7 @@ export default Counter;
 ```
 
 
-## Using our custom component multiple times in <App />
+## Using custom component multiple times in <App />
 
 ```js
 import Counter from "./components/Counter";
