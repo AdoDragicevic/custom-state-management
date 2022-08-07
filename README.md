@@ -197,5 +197,3 @@ root.render(
   </React.StrictMode>
 );
 ```
-
-# Happy coding!
