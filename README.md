@@ -8,7 +8,7 @@ In the code below I created a custom state management system for react.
 
 ---
 
-## 1. in your react project add the code responsible for configuring the global store logic
+## 1. in your react project add the code for the global store logic
 
 e.g. in src/store/store.js
 
