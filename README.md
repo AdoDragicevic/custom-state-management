@@ -70,11 +70,9 @@ const isObject = (val) => {
 
 
 export const initStore = (userActions, initialState) => {
-  if (initialState && !isObject(initialState)) {
-    throw new Error("initial state must be an object!");
-  }
-  // even if we create multiple stores, they are still merged into 1 store
+  if (initialState && !isObject(initialState)) throw new Error("initial state must be an object!");
   if (initialState) {
+    // even if we create multiple stores, they are merged into 1 store
     globalState = { ...globalState, ...initialState };
   }
   actions = { ...actions, ...userActions };
