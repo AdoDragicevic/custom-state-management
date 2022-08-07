@@ -88,7 +88,7 @@ function createStore() {
 ``` js
 // store is created here and accessible through the entire app
 // we don't need to wrap it around <App />
-createCounterStore();
+createSomeStore();
 ```
 
 
