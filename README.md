@@ -61,6 +61,7 @@ export const useStore = (shouldListen = true) => {
 };
 
 
+// initial state must be an object
 export const initStore = (userActions, initialState) => {
   // even if we create multiple stores, they are still merged into 1 store
   if (initialState) {
