@@ -8,7 +8,7 @@ In the code below I created a custom state management system for react.
 
 ---
 
-## in our react project src/ we add store/ and configure the base logic for our global state management in store.js
+## 1. in our react project src/ we add store/ and configure the base logic for our global state management in store.js
 
 ```js
 
@@ -68,5 +68,130 @@ export const initStore = (userActions, initialState) => {
   actions = { ...actions, ...userActions };
 };
 
+```
 
+
+## 2. We create a function for creating a custom store
+
+Blueprint for the store creation function; we can create multiple stores, they will be merged into 1 store
+
+``` js
+function createStore() {
+  const actions = {};
+  const state = {};
+  initStore({}, {});
+}
+```
+
+
+## 3. We instanciate the store in index.js; no wrapper component required
+
+``` js
+// store is created here and accessible through the entire app
+// we don't need to wrap it around <App />
+createCounterStore();
+```
+
+
+### EXAMPLE:
+
+## Creating a custom store function, based on step 2
+``` js
+export const createCounterStore = () => {
+
+  const state = { count: 0 };
+
+  const actions = {
+
+    INCREMENT(state, amount) {
+      return { count: state.count + amount };
+    },
+    
+    DECREMENT(state, amount) {
+      return { count: state.count - amount };
+    },
+    
+    RESET() {
+      return { count: 0 };
+    }
+
+  };
+
+  initStore(actions, state);
+}
+```
+
+## Creating a custom component that will consume the useStore hook
+``` js
+import { useStore } from "../store/store";
+
+const Counter = () => {
+
+  const [ state, dispatch ] = useStore();
+  const { count } = state;
+
+  const handleIncrement = () => {
+    dispatch("INCREMENT", 4);
+  };
+
+  const handleDecrement = () => {
+    dispatch("DECREMENT", 1);
+  }
+
+  const handleReset = () => {
+    dispatch("RESET");
+  }
+
+  return (
+    <div>
+      <h2>{count}</h2>
+      <button onClick={handleDecrement}>Decrement by 1</button>
+      <button onClick={handleReset}>Reset</button>
+      <button onClick={handleIncrement}>Increment by 4</button>
+    </div>
+  )
+};
+
+export default Counter;
+```
+
+
+## Using our custom component multiple times in <App />
+
+```js
+import Counter from "./components/Counter";
+
+function App() {
+  return (
+    <div className="App">
+      <Counter />
+      <Counter />
+      <Counter />
+    </div>
+  );
+}
+
+export default App;
+
+```
+
+## Instanciating store in Index.js
+
+```js
+import React from 'react';
+import ReactDOM from 'react-dom/client';
+import App from './App';
+
+import { createCounterStore } from './store/store-expamples';
+
+// store is created here and accessible through the entire app
+// we don't need to wrap it around <App />
+createCounterStore();
+
+const root = ReactDOM.createRoot(document.getElementById('root'));
+root.render(
+  <React.StrictMode>
+    <App />
+  </React.StrictMode>
+);
 ```
