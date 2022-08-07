@@ -75,7 +75,7 @@ export const initStore = (userActions, initialState) => {
 Blueprint for the store creation function; we can create multiple stores, they will be merged into 1 store
 
 ``` js
-function createStore() {
+function createSomeStore() {
   const actions = {};
   const state = {};
   initStore({}, {});
