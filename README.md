@@ -94,7 +94,7 @@ createSomeStore();
 ```
 
 
-### EXAMPLE:
+# EXAMPLE:
 
 ## Creating custom store function, based on step 2
 ``` js
