@@ -8,10 +8,9 @@ In the code below I created a custom state management system for react.
 
 ---
 
-## 1. in our react project src/ we add store/ and configure the base logic for our global state management in store.js (file naming and location are flexible)
+## 1. in our react project we add the below code, responsible for configuring the global store logic; e.g. in src/store/store.js
 
 ```js
-
 import { useState, useEffect } from "react";
 
 
