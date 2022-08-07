@@ -8,7 +8,7 @@ In the code below I created a custom state management system for react.
 
 ---
 
-## 1. in your react project add the below code, responsible for configuring the global store logic 
+## 1. in your react project add the code responsible for configuring the global store logic
 
 e.g. in src/store/store.js
 
@@ -80,23 +80,24 @@ Blueprint for the store creation function; we can create multiple stores, they w
 function createSomeStore() {
   const actions = {};
   const state = {};
-  initStore({}, {});
+  initStore(actions, state);
 }
 ```
 
 
-## 3. We instanciate the store in index.js; no wrapper component required
+## 3. instanciate the store in index.js; no wrapper component required
 
 ``` js
 // store is created here and accessible through the entire app
 // we don't need to wrap it around <App />
+// you can create multiple different stores, they are merget into 1 store
 createSomeStore();
 ```
 
 
 # EXAMPLE:
 
-## Creating custom store function, based on step 2
+## a) creating custom store function, based on step 2
 ``` js
 export const createCounterStore = () => {
 
@@ -122,7 +123,7 @@ export const createCounterStore = () => {
 }
 ```
 
-## Creating custom component that consumes useStore hook
+## b) creating custom component that consumes useStore hook
 ``` js
 import { useStore } from "../store/store";
 
@@ -157,7 +158,7 @@ export default Counter;
 ```
 
 
-## Using custom component multiple times in <App />
+## c) using custom component multiple times in <App />
 
 ```js
 import Counter from "./components/Counter";
@@ -176,7 +177,7 @@ export default App;
 
 ```
 
-## Instanciating store in Index.js
+## d) instanciating store in Index.js
 
 ```js
 import React from 'react';
@@ -196,3 +197,5 @@ root.render(
   </React.StrictMode>
 );
 ```
+
+# Happy coding!
