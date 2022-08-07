@@ -61,8 +61,18 @@ export const useStore = (shouldListen = true) => {
 };
 
 
-// initial state must be an object
+// helper function, you would probalby keep this in the helpers.js file
+const isObject = (val) => {
+    return typeof val === 'object' &&
+    !Array.isArray(val) &&
+    val !== null
+}
+
+
 export const initStore = (userActions, initialState) => {
+  if (initialState && !isObject(initialState)) {
+    throw new Error("initial state must be an object!");
+  }
   // even if we create multiple stores, they are still merged into 1 store
   if (initialState) {
     globalState = { ...globalState, ...initialState };
