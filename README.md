@@ -8,7 +8,7 @@ In the code below I created a custom state management system for react.
 
 ---
 
-## 1. in our react project we add the below code, responsible for configuring the global store logic; e.g. in src/store/store.js
+## 1. in our react project we add the below code, responsible for configuring the global store logic (e.g. in src/store/store.js)
 
 ```js
 import { useState, useEffect } from "react";
